@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="Controller">
+  <bottom>
+    <HBox prefHeight="20.0" prefWidth="1200.0">
+      <children>
+        <Region prefHeight="20.0" prefWidth="1088.0" HBox.hgrow="ALWAYS" />
+        <Label id="label" fx:id="status" prefWidth="-1.0" text="Please load data." wrapText="true" />
+      </children>
+      <BorderPane.margin>
+        <Insets bottom="10.0" left="10.0" right="10.0" fx:id="x3" />
+      </BorderPane.margin>
+    </HBox>
+  </bottom>
+  <center>
+    <VBox prefHeight="200.0" prefWidth="100.0">
+      <children>
+        <HBox minHeight="20.0" prefHeight="20.0" prefWidth="1200.0">
+          <children>
+            <Label fx:id="labelSelectedDirectory" prefWidth="-1.0" text="" />
+          </children>
+          <padding>
+            <Insets left="10.0" right="10.0" top="10.0" />
+          </padding>
+          <VBox.margin>
+            <Insets bottom="10.0" />
+          </VBox.margin>
+        </HBox>
+        <HBox prefHeight="292.9999000000025" prefWidth="1200.0" spacing="10.0">
+          <children>
+            <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+              <children>
+                <TextField alignment="CENTER" editable="false" opacity="1.0" prefHeight="30.0" prefWidth="585.0" text="Proteins" VBox.vgrow="NEVER" />
+                <TableView fx:id="table" maxHeight="-Infinity" prefHeight="230.0" prefWidth="585.0" VBox.vgrow="ALWAYS">
+                  <columns>
+                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="150.0" text="Name" fx:id="proteinNamesColumn" />
+                    <TableColumn prefWidth="150.0" text="ID" fx:id="proteinIDsColumn" />
+                    <TableColumn prefWidth="150.0" resizable="true" text="Gene Name" fx:id="geneNamesColumn" />
+                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="150.0" text="Sequences" fx:id="sequencesColumn" />
+                  </columns>
+                </TableView>
+                <HBox maxHeight="-Infinity" prefHeight="20.0" prefWidth="200.0">
+                  <children>
+                    <Region maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="510.0" HBox.hgrow="ALWAYS" />
+                    <Label fx:id="numberOfProteins" alignment="CENTER_RIGHT" prefWidth="74.0" text="" />
+                  </children>
+                </HBox>
+              </children>
+              <HBox.margin>
+                <Insets left="10.0" fx:id="x4" />
+              </HBox.margin>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+              <children>
+                <TextField alignment="CENTER" editable="false" maxWidth="-1.0" opacity="1.0" prefHeight="28.0" prefWidth="585.0" text="Peptides" VBox.vgrow="ALWAYS" />
+                <TableView fx:id="table2" maxHeight="-Infinity" prefHeight="230.0" prefWidth="585.0" VBox.vgrow="ALWAYS">
+                  <columns>
+                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="100.0" text="ID" fx:id="peptideIDsColumn" />
+                    <TableColumn prefWidth="180.0" text="Sequence" fx:id="peptideSequencesColumn" />
+                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="50.0" text="AA Before" fx:id="aaBeforesColumn" />
+                    <TableColumn minWidth="50.0" prefWidth="50.0" text="AA Last" fx:id="aaLastsColumn" />
+                    <TableColumn prefWidth="120.0" text="Intensity" fx:id="peptideIntensitiesColumn" />
+                    <TableColumn maxWidth="5000.0" minWidth="10.0" prefWidth="75.0" text="N terminal Protease" fx:id="nTerminalProteaseColumn" />
+                    <TableColumn prefWidth="75.0" text="C terminal Protease" fx:id="cTerminalProteaseColumn" />
+                  </columns>
+                </TableView>
+                <HBox maxHeight="-Infinity" prefHeight="20.0" prefWidth="200.0">
+                  <children>
+                    <Region maxHeight="-Infinity" prefHeight="20.0" prefWidth="529.0" HBox.hgrow="ALWAYS" />
+                    <Label fx:id="numberOfPeptides" alignment="CENTER_RIGHT" contentDisplay="LEFT" prefWidth="59.0" text="" />
+                  </children>
+                </HBox>
+              </children>
+              <HBox.margin>
+                <Insets right="10.0" />
+              </HBox.margin>
+            </VBox>
+          </children>
+        </HBox>
+        <VBox prefHeight="250.0" prefWidth="1200.0">
+          <children>
+            <TextField alignment="CENTER" maxHeight="-Infinity" prefHeight="30.0" prefWidth="1180.0" text="Sequence View">
+              <VBox.margin>
+                <Insets left="10.0" right="10.0" />
+              </VBox.margin>
+            </TextField>
+            <ScrollPane fx:id="scrollPane" maxHeight="-Infinity" prefHeight="206.0" prefWidth="1180.0" VBox.margin="$x3" VBox.vgrow="ALWAYS">
+              <content>
+                <GridPane fx:id="gridPane" alignment="BOTTOM_LEFT" gridLinesVisible="false" maxWidth="-1.0" minWidth="-1.0" prefHeight="114.0" prefWidth="60.0" visible="true">
+                  <columnConstraints>
+                    <ColumnConstraints hgrow="ALWAYS" minWidth="30.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" prefWidth="100.0" />
+                  </columnConstraints>
+                  <rowConstraints>
+                    <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  </rowConstraints>
+                </GridPane>
+              </content>
+            </ScrollPane>
+          </children>
+        </VBox>
+        <HBox fx:id="hbox" prefHeight="114.0" prefWidth="1200.0" VBox.vgrow="ALWAYS">
+          <children>
+            <VBox prefHeight="164.0" prefWidth="510.0" HBox.hgrow="NEVER">
+              <children>
+                <Label id="labelSelectEnzyme" fx:id="labelSelectedEnzyme" text="" VBox.margin="$x4" />
+                <HBox prefHeight="28.0" prefWidth="510.0">
+                  <children>
+                    <ChoiceBox fx:id="box">
+                      <items>
+                        <FXCollections fx:factory="observableArrayList">
+                        </FXCollections>
+                      </items>
+                      <HBox.margin>
+                        <Insets left="10.0" fx:id="x4" />
+                      </HBox.margin>
+                    </ChoiceBox>
+                    <TextField alignment="CENTER" prefHeight="30.0" prefWidth="488.0" text="Cleavage Plot">
+                      <HBox.margin>
+                        <Insets right="16.0" />
+                      </HBox.margin>
+                    </TextField>
+                  </children>
+                </HBox>
+                <LineChart fx:id="lineChart2" minHeight="89.0" prefHeight="89.0" prefWidth="510.0" VBox.vgrow="ALWAYS">
+                  <xAxis>
+                    <NumberAxis fx:id="xAxis" side="BOTTOM" />
+                  </xAxis>
+                  <yAxis>
+                    <NumberAxis fx:id="yAxis" side="LEFT" />
+                  </yAxis>
+                </LineChart>
+              </children>
+            </VBox>
+            <VBox prefHeight="164.0" prefWidth="595.0" HBox.hgrow="ALWAYS">
+              <children>
+                <HBox prefHeight="30.0" prefWidth="200.0">
+                  <children>
+                    <TextField alignment="CENTER" maxHeight="-Infinity" prefHeight="30.0" prefWidth="473.0" text="Result Table" HBox.hgrow="ALWAYS" />
+                    <Button mnemonicParsing="false" onAction="#FileChooserSaveDialog" prefHeight="30.0" text="Export">
+                      <textFill>
+                        <Color blue="1.000" green="0.640" red="0.400" fx:id="x2" />
+                      </textFill>
+                      <HBox.margin>
+                        <Insets right="10.0" />
+                      </HBox.margin>
+                    </Button>
+                  </children>
+                </HBox>
+                <TableView fx:id="table3" maxHeight="1.7976931348623157E308" prefHeight="89.0" prefWidth="670.0" visible="true" VBox.vgrow="ALWAYS">
+                  <VBox.margin>
+                    <Insets bottom="10.0" right="10.0" />
+                  </VBox.margin>
+                </TableView>
+              </children>
+              <HBox.margin>
+                <Insets left="10.0" fx:id="x4" />
+              </HBox.margin>
+            </VBox>
+          </children>
+        </HBox>
+      </children>
+    </VBox>
+  </center>
+  <top>
+    <HBox prefHeight="53.0" prefWidth="1200.0" spacing="10.0">
+      <children>
+        <Button id="button" cancelButton="false" defaultButton="false" mnemonicParsing="false" onAction="#directoryChooser" prefHeight="64.0" prefWidth="122.0" text="%fa.download" textFill="$x2">
+          <font>
+            <Font name="FontAwesome" size="17.0" fx:id="x1" />
+          </font>
+        </Button>
+        <Button font="$x1" mnemonicParsing="false" onAction="#FileChooserFasta" prefHeight="64.0" prefWidth="107.0" text="%fa.arrow_down" textFill="$x2" />
+      </children>
+      <padding>
+        <Insets left="10.0" right="10.0" top="10.0" />
+      </padding>
+    </HBox>
+  </top>
+</BorderPane>
