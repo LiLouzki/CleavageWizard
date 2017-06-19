@@ -237,13 +237,14 @@ Label labelSelectedEnzyme;
 									* Data of cleavage sites of selected protein are saved in cleavages object.
 									*/
 									for (Peptide pep : selectedProtein.getPeptides()){
+										long intens = new BigDecimal(pep.getPeptideIntensity().replace(",", ".")).longValue();
 										if (pep.getPeptideIntensity() != ""){
 											if (pep.getStartPositions() != ""){
 												if (pep.getEndPositions() != ""){
 													if (pep.getnTerminalProtease() != null){
 														if (pep.getcTerminalProtease() != null){
 															if(pep.getExpIntensityMap() != null){
-																long intens = new BigDecimal(pep.getPeptideIntensity().replace(",", ".")).longValue();
+																
 																cleavages.setCleavagesMaps((Integer.parseInt(pep.getStartPositions().
 																		replace(",", "."))) - 1,intens, pep.getnTerminalProtease(), pep.getExpIntensityMap(), 
 																		selectedProtein.getsequence().length());
@@ -251,8 +252,17 @@ Label labelSelectedEnzyme;
 																		replace(",", "."))), intens, pep.getcTerminalProtease(),  pep.getExpIntensityMap(),
 																		selectedProtein.getsequence().length());
 															}
-														}
-													}
+														}else{
+															  cleavages.setCleavagesMaps((Integer.parseInt(pep.getStartPositions().
+																	replace(",", "."))) - 1,intens, pep.getnTerminalProtease(), pep.getExpIntensityMap(), 
+																	selectedProtein.getsequence().length());
+															}
+													}else{
+															cleavages.setCleavagesMaps((Integer.parseInt(pep.getEndPositions().
+																	replace(",", "."))), intens, pep.getcTerminalProtease(),  pep.getExpIntensityMap(),
+																	selectedProtein.getsequence().length());
+														
+														 }
 												}
 											}
 										}

@@ -52,7 +52,7 @@ public class Cleavages {
 				expIntensityMapCopy.putAll(expIntensityMap);
 				
 				experimentSet = expIntensityMapCopy.keySet();
-				if (position != proteinlength){
+				//if (position != proteinlength){
 					
 						if (cleavagesIntensityMap.containsKey(position)){
 							long intensitySum = intensity + cleavagesIntensityMap.get(position);
@@ -66,7 +66,6 @@ public class Cleavages {
 						}else{
 							cleavagesProteaseMap.put(position, terminalProtease);
 						}
-				}
 				
 				Map <String, String> expIntensityMapCopyCleavages = new HashMap<String, String>();
 				expIntensityMapCopyCleavages = positionIntensitiesMap.get(position);
